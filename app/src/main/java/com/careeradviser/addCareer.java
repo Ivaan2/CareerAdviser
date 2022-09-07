@@ -1,11 +1,10 @@
 package com.careeradviser;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -20,24 +19,21 @@ public class addCareer extends AppCompatActivity {
         setContentView(R.layout.activity_add_career);
 
         setData();
-        addBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (jobTitle.getText().toString().isEmpty()){
-                    Toast.makeText(getApplicationContext(), "El nombre del empleo no puede ser nulo", Toast.LENGTH_SHORT).show();
-                }else{
-                    String titulo = jobTitle.getText().toString();
-                    int studyYears = 0;
-                    int workYears = 0;
-                    if (studyYearsEt.getText().toString()!="" || studyYearsEt.getText().toString()=="0"){
-                        studyYears = Integer.parseInt(studyYearsEt.getText().toString());
-                    }
-                    if (workYearsEt.getText().toString()!="" || workYearsEt.getText().toString()=="0"){
-                        workYears = Integer.parseInt(workYearsEt.getText().toString());
-                    }
-
-                    //Cambiar de pantalla
+        addBtn.setOnClickListener(view -> {
+            if (jobTitle.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(), "El nombre del empleo no puede ser nulo", Toast.LENGTH_SHORT).show();
+            }else{
+                String titulo = jobTitle.getText().toString();
+                int studyYears = 0;
+                int workYears = 0;
+                if (!studyYearsEt.getText().toString().equals("") || studyYearsEt.getText().toString().equals("0")){
+                    studyYears = Integer.parseInt(studyYearsEt.getText().toString());
                 }
+                if (!workYearsEt.getText().toString().equals("") || workYearsEt.getText().toString().equals("0")){
+                    workYears = Integer.parseInt(workYearsEt.getText().toString());
+                }
+
+                //Cambiar de pantalla
             }
         });
     }
